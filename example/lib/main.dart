@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
                   print(res.map((e) => e.path).toList());
                   setState(() {
                     path = res[0].thumbPath;
-                    print(path);
+                    print("test:$path");
                   });
                   // bool status = await ImagesPicker.saveImageToAlbum(File(res[0]?.path));
                   // print(status);

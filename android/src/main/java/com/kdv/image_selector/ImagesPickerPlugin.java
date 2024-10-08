@@ -1,18 +1,10 @@
 package com.kdv.image_selector;
 
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.config.SelectMimeType;
@@ -30,11 +22,9 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** ImagesPickerPlugin */
-public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware, PluginRegistry.RequestPermissionsResultListener {
+public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware{
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -43,11 +33,7 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   private Result _result;
   private Activity activity;
   private Context context;
-  private int WRITE_IMAGE_CODE = 33;
-  private int WRITE_VIDEO_CODE = 44;
-  private String WRITE_IMAGE_PATH;
-  private String WRITE_VIDEO_PATH;
-  private String ALBUM_NAME;
+
   public static String channelName = "chavesgu/image_selector";
 
   @Override
@@ -55,14 +41,6 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), channelName);
     channel.setMethodCallHandler(this);
     context = flutterPluginBinding.getApplicationContext();
-  }
-
-  public static void registerWith(Registrar registrar) {
-    ImagesPickerPlugin instance = new ImagesPickerPlugin();
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), channelName);
-    channel.setMethodCallHandler(instance);
-    instance.context = registrar.context();
-    registrar.addRequestPermissionsResultListener(instance);
   }
 
   @Override
@@ -73,7 +51,6 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   @Override
   public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
     activity = binding.getActivity();
-    binding.addRequestPermissionsResultListener(this);
   }
 
   @Override
@@ -110,12 +87,12 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
         PictureUtils.createMin(activity,
                 pickType,
                 language,
-                null,
+                new ArrayList<>(),
                 new PictureUtils.OnPictureSelectorResultListener() {
                   @Override
                   public void onResult(ArrayList<LocalMedia> medias) {
                     // 结果回调
-                    onResult(medias);
+                    handleResult(medias);
                   }
                 });
         break;
@@ -137,57 +114,22 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
             break;
         }
 
-        PictureUtils.openCamera(context, false, new PictureUtils.OnPictureSelectorResultListener() {
+        PictureUtils.openCamera(activity, false, new PictureUtils.OnPictureSelectorResultListener() {
           @Override
           public void onResult(ArrayList<LocalMedia> medias) {
             // 结果回调
-            onResult(medias);
+            handleResult(medias);
           }
         });
         break;
       }
-      case "saveVideoToAlbum": {
-        String path = (String) call.argument("path");
-        String albumName = call.argument("albumName");
-        WRITE_VIDEO_PATH = path;
-        ALBUM_NAME = albumName;
-        if (hasPermission()) {
-          saveVideoToGallery(path, albumName);
-        } else {
-          String[] permissions = new String[2];
-          permissions[0] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-          permissions[1] = Manifest.permission.READ_EXTERNAL_STORAGE;
-          ActivityCompat.requestPermissions(activity, permissions, WRITE_VIDEO_CODE);
-        }
-        break;
-      }
-      case "saveImageToAlbum": {
-        String path = (String) call.argument("path");
-        String albumName = call.argument("albumName");
-        WRITE_IMAGE_PATH = path;
-        ALBUM_NAME = albumName;
-        if (hasPermission()) {
-          saveImageToGallery(path, albumName);
-        } else {
-          String[] permissions = new String[2];
-          permissions[0] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-          permissions[1] = Manifest.permission.READ_EXTERNAL_STORAGE;
-          ActivityCompat.requestPermissions(activity, permissions, WRITE_IMAGE_CODE);
-        }
-        break;
-      }
-//      case "saveNetworkImageToAlbum": {
-//        String url = (String) call.arguments;
-//        saveNetworkImageToGallery(url);
-//        break;
-//      }
       default:
         result.notImplemented();
         break;
     }
   }
 
-  private void onResult(ArrayList<LocalMedia> medias) {
+  private void handleResult(ArrayList<LocalMedia> medias) {
     new Thread() {
       @Override
       public void run() {
@@ -222,34 +164,4 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
       }
     }.start();
   }
-
-  private void saveImageToGallery(final String path, String albumName) {
-    boolean status = false;
-    String suffix = path.substring(path.lastIndexOf('.')+1);
-    Bitmap bitmap = BitmapFactory.decodeFile(path);
-    status = FileSaver.saveImage(context, bitmap, suffix, albumName);
-    _result.success(status);
-  }
-
-  private void saveVideoToGallery(String path, String albumName) {
-    _result.success(FileSaver.saveVideo(context, path, albumName));
-  }
-
-  private boolean hasPermission() {
-    return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-            (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED);
-  }
-
-    @Override
-    public boolean onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-      if (requestCode == WRITE_IMAGE_CODE && grantResults[0] == PERMISSION_GRANTED && grantResults[1] == PERMISSION_GRANTED) {
-          saveImageToGallery(WRITE_IMAGE_PATH, ALBUM_NAME);
-          return true;
-      }
-      if (requestCode == WRITE_VIDEO_CODE && grantResults[0] == PERMISSION_GRANTED && grantResults[1] == PERMISSION_GRANTED) {
-          saveVideoToGallery(WRITE_VIDEO_PATH, ALBUM_NAME);
-          return true;
-      }
-      return false;
-    }
 }

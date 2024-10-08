@@ -40,11 +40,12 @@ class ImageSelector {
             : null,
         "language": language.toString(),
       });
+      print("test:$res");
       if (res != null) {
         List<Media> output = res.map((image) {
           Media media = Media(
             path: image["path"],
-            size: ((image["size"] ?? 0) / 1024).toDouble(),
+            size: image["size"],
             thumbPath: image["thumbPath"],
           );
           return media;
@@ -92,7 +93,7 @@ class ImageSelector {
         List<Media> output = res.map((image) {
           Media media = Media(
             path: image["path"],
-            size: ((image["size"] ?? 0) / 1024).toDouble(),
+            size: image["size"],
             thumbPath: image["thumbPath"],
           );
           return media;
