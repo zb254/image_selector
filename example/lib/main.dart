@@ -36,20 +36,16 @@ class _MyAppState extends State<MyApp> {
               child: Text('pick'),
               onPressed: () async {
                 List<Media>? res = await ImageSelector.pick(
-                  count: 3,
+                  count: 1,
                   pickType: PickType.image,
-                  language: Language.System,
-                  // maxSize: 500,
-                  cropOpt: CropOption(
-                    aspectRatio: CropAspectRatio.wh16x9,
-                  ),
                 );
                 if (res != null) {
-                  print(res.map((e) => e.path).toList());
-                  setState(() {
-                    path = res[0].thumbPath;
-                    print("test:$path");
-                  });
+                  path = res[0].path;
+                  print("result:$path");
+                  // setState(() {
+                  //   path = res[0].thumbPath;
+                  //   print("result:$path");
+                  // });
                   // bool status = await ImagesPicker.saveImageToAlbum(File(res[0]?.path));
                   // print(status);
                 }

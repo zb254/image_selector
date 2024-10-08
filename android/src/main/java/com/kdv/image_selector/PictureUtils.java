@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import com.luck.picture.lib.language.LanguageConfig;
 import com.luck.picture.lib.permissions.PermissionChecker;
 import com.luck.picture.lib.permissions.PermissionResultCallback;
 import com.luck.picture.lib.utils.MediaUtils;
+import com.luck.picture.lib.utils.PictureFileUtils;
 import com.luck.picture.lib.utils.ToastUtils;
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCropImageEngine;
@@ -279,24 +281,22 @@ public class PictureUtils {
                                         media.setHeight(videoExtraInfo.getHeight());
                                     }
                                 }
-//                            LogUtils.e("文件名: " + media.getFileName() + "\n" +
-//                                    "是否压缩:" + media.isCompressed() + "\n" +
-//                                    "压缩路径:" + media.getCompressPath() + "\n" +
-//                                    "初始路径:" + media.getPath() + "\n" +
-//                                    "绝对路径:" + media.getRealPath() + "\n" +
-//                                    "是否裁剪:" + media.isCut() + "\n" +
-//                                    "裁剪路径:" + media.getCutPath() + "\n" +
-//                                    "是否开启原图:" + media.isOriginal() + "\n" +
-//                                    "原图路径:" + media.getOriginalPath() + "\n" +
-//                                    "沙盒路径:" + media.getSandboxPath() + "\n" +
-//                                    "水印路径:" + media.getWatermarkPath() + "\n" +
-//                                    "视频缩略图:" + media.getVideoThumbnailPath() + "\n" +
-//                                    "原始宽高: " + media.getWidth() + "x" + media.getHeight() + "\n" +
-//                                    "裁剪宽高: " + media.getCropImageWidth() + "x" + media.getCropImageHeight() + "\n" +
-//                                    "文件大小: " + PictureFileUtils.formatAccurateUnitFileSize(media.getSize()) + "\n" +
-//                                    "文件大小: " + media.getSize() + "\n" +
-//                                    "文件时长: " + media.getDuration()
-//                            );
+//                                Log.i(TAG, "文件名: " + media.getFileName());
+//                                Log.i(TAG, "是否压缩:" + media.isCompressed());
+//                                Log.i(TAG, "压缩:" + media.getCompressPath());
+//                                Log.i(TAG, "初始路径:" + media.getPath());
+//                                Log.i(TAG, "绝对路径:" + media.getRealPath());
+//                                Log.i(TAG, "是否裁剪:" + media.isCut());
+//                                Log.i(TAG, "裁剪路径:" + media.getCutPath());
+//                                Log.i(TAG, "是否开启原图:" + media.isOriginal());
+//                                Log.i(TAG, "原图路径:" + media.getOriginalPath());
+//                                Log.i(TAG, "沙盒路径:" + media.getSandboxPath());
+//                                Log.i(TAG, "水印路径:" + media.getWatermarkPath());
+//                                Log.i(TAG, "视频缩略图:" + media.getVideoThumbnailPath());
+//                                Log.i(TAG, "原始宽高: " + media.getWidth() + "x" + media.getHeight());
+//                                Log.i(TAG, "裁剪宽高: " + media.getCropImageWidth() + "x" + media.getCropImageHeight());
+//                                Log.i(TAG, "文件大小: " + PictureFileUtils.formatAccurateUnitFileSize(media.getSize()));
+//                                Log.i(TAG, "文件时长: " + media.getDuration());
                             }
                             onPictureSelectorResultListener.onResult(result);
                         }

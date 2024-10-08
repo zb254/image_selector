@@ -3,6 +3,7 @@ package com.kdv.image_selector;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -136,10 +137,14 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
         final List<Object> resArr = new ArrayList<Object>();
         for (LocalMedia media : medias) {
           HashMap<String, Object> map = new HashMap<String, Object>();
-          String path = media.getPath();
-
-          if (media.isCut()) path = media.getCutPath();
-          if (media.isCompressed()) path = media.getCompressPath();
+//          String path = media.getPath();
+          String path = media.getAvailablePath();
+          Log.d("handleResult","path==>" + path);
+          if(PictureMimeType.isContent(path) && !media.isCut() && !media.isCompressed()) {
+//            Uri uri = Uri.parse(path);
+            path = media.getRealPath();
+            Log.d("handleResult","path2==>" + "" +",result:" + path);
+          }
           map.put("path", path);
 
           String thumbPath;
