@@ -1,0 +1,31 @@
+PODS:
+  - Flutter (1.0.0)
+  - image_selector (0.0.1):
+    - Flutter
+    - ZLPhotoBrowser (= 4.1.5)
+  - ZLPhotoBrowser (4.1.5):
+    - ZLPhotoBrowser/Core (= 4.1.5)
+  - ZLPhotoBrowser/Core (4.1.5)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - image_selector (from `.symlinks/plugins/image_selector/ios`)
+
+SPEC REPOS:
+  trunk:
+    - ZLPhotoBrowser
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  image_selector:
+    :path: ".symlinks/plugins/image_selector/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  image_selector: 1864e234e418019279a5c953c1faf4e0328c9ad7
+  ZLPhotoBrowser: 809878607ea92e9411c580797ce1be23896b8d7f
+
+PODFILE CHECKSUM: 1515c96104c65a71953dab6b4c276d330f455696
+
+COCOAPODS: 1.12.1
