@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.dart_tool/
+
+.metadata
+
+.packages
+.pub/
+
+build/
