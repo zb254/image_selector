@@ -40,7 +40,6 @@ class ImageSelector {
             : null,
         "language": language.toString(),
       });
-      print("test:$res");
       if (res != null) {
         List<Media> output = res.map((image) {
           Media media = Media(
@@ -191,7 +190,7 @@ class Media {
   String path;
 
   /// 文件大小
-  double size;
+  String size;
 
   Media({
     required this.path,
