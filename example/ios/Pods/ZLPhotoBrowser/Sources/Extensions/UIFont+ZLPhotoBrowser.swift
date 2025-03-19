@@ -1,8 +1,8 @@
 //
-//  Int+ZLPhotoBrowser.swift
+//  UIFont+ZLPhotoBrowser.swift
 //  ZLPhotoBrowser
 //
-//  Created by ruby109 on 2020/11/3.
+//  Created by long on 2022/7/7.
 //
 //  Copyright (c) 2020 Long Zhang <495181165@qq.com>
 //
@@ -24,12 +24,14 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-extension Int {
-    
-    init(_ bool:Bool) {
-        self = bool ? 1 : 0
+extension ZLPhotoBrowserWrapper where Base: UIFont {
+    static func font(ofSize size: CGFloat, bold: Bool = false) -> UIFont {
+        guard let name = ZLCustomFontDeploy.fontName else {
+            return UIFont.systemFont(ofSize: size, weight: bold ? .medium : .regular)
+        }
+        
+        return UIFont(name: name, size: size) ?? UIFont.systemFont(ofSize: size, weight: bold ? .medium : .regular)
     }
-    
 }

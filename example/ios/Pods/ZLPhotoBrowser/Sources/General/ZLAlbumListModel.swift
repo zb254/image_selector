@@ -28,7 +28,6 @@ import UIKit
 import Photos
 
 public class ZLAlbumListModel: NSObject {
-
     public let title: String
     
     public var count: Int {
@@ -53,9 +52,15 @@ public class ZLAlbumListModel: NSObject {
     private var selectedModels: [ZLPhotoModel] = []
     
     // 暂未用到
-    private var selectedCount: Int = 0
+    private var selectedCount = 0
     
-    public init(title: String, result: PHFetchResult<PHAsset>, collection: PHAssetCollection, option: PHFetchOptions, isCameraRoll: Bool) {
+    public init(
+        title: String,
+        result: PHFetchResult<PHAsset>,
+        collection: PHAssetCollection,
+        option: PHFetchOptions,
+        isCameraRoll: Bool
+    ) {
         self.title = title
         self.result = result
         self.collection = collection
@@ -64,18 +69,25 @@ public class ZLAlbumListModel: NSObject {
     }
     
     public func refetchPhotos() {
-        let models = ZLPhotoManager.fetchPhoto(in: self.result, ascending: ZLPhotoConfiguration.default().sortAscending, allowSelectImage: ZLPhotoConfiguration.default().allowSelectImage, allowSelectVideo:  ZLPhotoConfiguration.default().allowSelectVideo)
+        let models = ZLPhotoManager.fetchPhoto(
+            in: result,
+            ascending: ZLPhotoUIConfiguration.default().sortAscending,
+            allowSelectImage: ZLPhotoConfiguration.default().allowSelectImage,
+            allowSelectVideo: ZLPhotoConfiguration.default().allowSelectVideo
+        )
         self.models.removeAll()
         self.models.append(contentsOf: models)
     }
     
     func refreshResult() {
-        self.result = PHAsset.fetchAssets(in: self.collection, options: self.option)
+        result = PHAsset.fetchAssets(in: collection, options: option)
     }
-    
 }
 
-
-func ==(lhs: ZLAlbumListModel, rhs: ZLAlbumListModel) -> Bool {
-    return lhs.title == rhs.title && lhs.count == rhs.count && lhs.headImageAsset?.localIdentifier == rhs.headImageAsset?.localIdentifier
+extension ZLAlbumListModel {
+    static func ==(lhs: ZLAlbumListModel, rhs: ZLAlbumListModel) -> Bool {
+        return lhs.title == rhs.title &&
+            lhs.count == rhs.count &&
+            lhs.headImageAsset?.localIdentifier == rhs.headImageAsset?.localIdentifier
+    }
 }

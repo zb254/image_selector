@@ -27,38 +27,48 @@
 import UIKit
 import Photos
 
-extension ZLPhotoModel {
-    
-    public enum MediaType: Int {
+public extension ZLPhotoModel {
+    enum MediaType: Int {
         case unknown = 0
         case image
         case gif
         case livePhoto
         case video
     }
-    
 }
 
-
 public class ZLPhotoModel: NSObject {
-
     public let ident: String
     
     public let asset: PHAsset
-    
+
     public var type: ZLPhotoModel.MediaType = .unknown
     
-    public var duration: String = ""
+    public var duration = ""
     
-    public var isSelected: Bool = false
+    public var isSelected = false
     
-    private var pri_editImage: UIImage? = nil
+    private var pri_dataSize: ZLPhotoConfiguration.KBUnit?
+    
+    public var dataSize: ZLPhotoConfiguration.KBUnit? {
+        if let pri_dataSize = pri_dataSize {
+            return pri_dataSize
+        }
+        
+        let size = ZLPhotoManager.fetchAssetSize(for: asset)
+        pri_dataSize = size
+        
+        return size
+    }
+    
+    private var pri_editImage: UIImage?
+    
     public var editImage: UIImage? {
         set {
             pri_editImage = newValue
         }
         get {
-            if let _ = self.editImageModel {
+            if let _ = editImageModel {
                 return pri_editImage
             } else {
                 return nil
@@ -66,7 +76,7 @@ public class ZLPhotoModel: NSObject {
         }
     }
     
-    public var second: Second {
+    public var second: ZLPhotoConfiguration.Second {
         guard type == .video else {
             return 0
         }
@@ -74,18 +84,18 @@ public class ZLPhotoModel: NSObject {
     }
     
     public var whRatio: CGFloat {
-        return CGFloat(self.asset.pixelWidth) / CGFloat(self.asset.pixelHeight)
+        return CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
     }
     
     public var previewSize: CGSize {
-        let scale: CGFloat = 2 //UIScreen.main.scale
-        if self.whRatio > 1 {
+        let scale: CGFloat = UIScreen.main.scale
+        if whRatio > 1 {
             let h = min(UIScreen.main.bounds.height, ZLMaxImageWidth) * scale
-            let w = h * self.whRatio
+            let w = h * whRatio
             return CGSize(width: w, height: h)
         } else {
             let w = min(UIScreen.main.bounds.width, ZLMaxImageWidth) * scale
-            let h = w / self.whRatio
+            let h = w / whRatio
             return CGSize(width: w, height: h)
         }
     }
@@ -94,13 +104,13 @@ public class ZLPhotoModel: NSObject {
     public var editImageModel: ZLEditImageModel?
     
     public init(asset: PHAsset) {
-        self.ident = asset.localIdentifier
+        ident = asset.localIdentifier
         self.asset = asset
         super.init()
         
-        self.type = self.transformAssetType(for: asset)
-        if self.type == .video {
-            self.duration = self.transformDuration(for: asset)
+        type = transformAssetType(for: asset)
+        if type == .video {
+            duration = transformDuration(for: asset)
         }
     }
     
@@ -109,13 +119,11 @@ public class ZLPhotoModel: NSObject {
         case .video:
             return .video
         case .image:
-            if (asset.value(forKey: "filename") as? String)?.hasSuffix("GIF") == true {
+            if asset.zl.isGif {
                 return .gif
             }
-            if #available(iOS 9.1, *) {
-                if asset.mediaSubtypes == .photoLive || asset.mediaSubtypes.rawValue == 10 {
-                    return .livePhoto
-                }
+            if asset.mediaSubtypes.contains(.photoLive) {
+                return .livePhoto
             }
             return .image
         default:
@@ -142,10 +150,10 @@ public class ZLPhotoModel: NSObject {
             return ""
         }
     }
-    
 }
 
-
-public func ==(lhs: ZLPhotoModel, rhs: ZLPhotoModel) -> Bool {
-    return lhs.ident == rhs.ident
+public extension ZLPhotoModel {
+    static func == (lhs: ZLPhotoModel, rhs: ZLPhotoModel) -> Bool {
+        return lhs.ident == rhs.ident
+    }
 }

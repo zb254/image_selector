@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -103,15 +102,5 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-  }
-
-  Future<File> downloadFile(String url) async {
-    Dio simple = Dio();
-    String savePath = Directory.systemTemp.path + '/' + url.split('/').last;
-    await simple.download(url, savePath,
-        options: Options(responseType: ResponseType.bytes));
-    print(savePath);
-    File file = new File(savePath);
-    return file;
   }
 }

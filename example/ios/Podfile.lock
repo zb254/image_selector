@@ -2,10 +2,10 @@ PODS:
   - Flutter (1.0.0)
   - image_selector (0.0.1):
     - Flutter
-    - ZLPhotoBrowser (= 4.1.5)
-  - ZLPhotoBrowser (4.1.5):
-    - ZLPhotoBrowser/Core (= 4.1.5)
-  - ZLPhotoBrowser/Core (4.1.5)
+    - ZLPhotoBrowser (= 4.5.6)
+  - ZLPhotoBrowser (4.5.6):
+    - ZLPhotoBrowser/Core (= 4.5.6)
+  - ZLPhotoBrowser/Core (4.5.6)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -23,9 +23,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  image_selector: 1864e234e418019279a5c953c1faf4e0328c9ad7
-  ZLPhotoBrowser: 809878607ea92e9411c580797ce1be23896b8d7f
+  image_selector: 74db36c0b4450ca136012e3d6116305e0c0abb85
+  ZLPhotoBrowser: 9fdd801da47d5aaff778b8213fc711bbadab9cb2
 
-PODFILE CHECKSUM: 1515c96104c65a71953dab6b4c276d330f455696
+PODFILE CHECKSUM: 9ce7f180cf9cf261a2d6d45ff4cc371793f1fd46
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.16.2
