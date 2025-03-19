@@ -34,57 +34,102 @@ public class SwiftImagesPickerPlugin: NSObject, FlutterPlugin {
       let vc = UIApplication.shared.delegate!.window!!.rootViewController!;
       let ac = ZLPhotoPreviewSheet();
       let config = ZLPhotoConfiguration.default();
-      self.setLanguage(configuration: config, language: language);
+      let uiConfig = ZLPhotoUIConfiguration.default();
+      
+      self.setLanguage(configuration: uiConfig, language: language);
       self.setConfig(configuration: config, pickType: pickType);
       config.maxSelectCount = count;
       config.allowSelectGif = supportGif;
       if cropOption != nil {
         config.allowEditImage = true;
         if let aspectRatioX = cropOption!["aspectRatioX"] as? Double,let aspectRatioY = cropOption!["aspectRatioY"] as? Double {
-          config.editImageClipRatios = [ZLImageClipRatio(title: "", whRatio: CGFloat(aspectRatioX/aspectRatioY))];
+            config.editImageConfiguration.clipRatios = [ZLImageClipRatio(title: "", whRatio: CGFloat(aspectRatioX/aspectRatioY))];
         }
       }
       
       self.setThemeColor(configuration: config, colors: theme);
-      
-      ac.selectImageBlock = { (images, assets, isOriginal) in
-        var resArr = [[String: StringOrInt]]();
-        let manager = PHImageManager.default();
-        let options = PHVideoRequestOptions();
-        options.isNetworkAccessAllowed = true;
-        options.deliveryMode = .automatic;
-        options.version = .original;
         
-        let group = DispatchGroup();
-        for (index, asset) in assets.enumerated() {
-          group.enter();
-          if asset.mediaType==PHAssetMediaType.image {
-            let image = images[index];
-            if self.getImageType(asset: asset)=="gif" && supportGif { // gif 取原路径
-              self.resolveImage(asset: asset, resultHandler: { dir in
-                resArr.append(dir);
+        
+      ac.selectImageBlock = { [weak self] (results, _) in
+          let images = results.map { $0.image }
+          let assets = results.map { $0.asset }
+          var resArr = [[String: StringOrInt]]();
+          let manager = PHImageManager.default();
+          let options = PHVideoRequestOptions();
+          options.isNetworkAccessAllowed = true;
+          options.deliveryMode = .automatic;
+          options.version = .original;
+          
+          let group = DispatchGroup();
+            for (index, asset) in assets.enumerated() {
+            group.enter();
+            if asset.mediaType==PHAssetMediaType.image {
+              let image = images[index];
+                if self?.getImageType(asset: asset)=="gif" && supportGif { // gif 取原路径
+                    self?.resolveImage(asset: asset, resultHandler: { dir in
+                  resArr.append(dir);
+                  group.leave();
+                });
+              } else {
+                  resArr.append(self!.resolveImage(image: image, maxSize: maxSize));
                 group.leave();
-              });
+              }
+            } else if asset.mediaType==PHAssetMediaType.video {
+              manager.requestAVAsset(forVideo: asset, options: options, resultHandler: { avasset,audioMix,info  in
+                let videoUrl = avasset as! AVURLAsset;
+                let url = videoUrl.url;
+                // TODO: mov to mp4
+                  resArr.append(self!.resolveVideo(url: url));
+                group.leave();
+              })
             } else {
-              resArr.append(self.resolveImage(image: image, maxSize: maxSize));
               group.leave();
             }
-          } else if asset.mediaType==PHAssetMediaType.video {
-            manager.requestAVAsset(forVideo: asset, options: options, resultHandler: { avasset,audioMix,info  in
-              let videoUrl = avasset as! AVURLAsset;
-              let url = videoUrl.url;
-              // TODO: mov to mp4
-              resArr.append(self.resolveVideo(url: url));
-              group.leave();
-            })
-          } else {
-            group.leave();
           }
-        }
-        group.notify(queue: .main) {
-          result(resArr);
-        }
+          group.notify(queue: .main) {
+            result(resArr);
+          }
+                   
       }
+        
+//      ac.selectImageBlock = { (images, assets, isOriginal) in
+//          var resArr = [[String: StringOrInt]]();
+//          let manager = PHImageManager.default();
+//          let options = PHVideoRequestOptions();
+//          options.isNetworkAccessAllowed = true;
+//          options.deliveryMode = .automatic;
+//          options.version = .original;
+//          
+//          let group = DispatchGroup();
+//            for (index, asset) in assets.enumerated() {
+//            group.enter();
+//            if asset.mediaType==PHAssetMediaType.image {
+//              let image = images[index];
+//              if self.getImageType(asset: asset)=="gif" && supportGif { // gif 取原路径
+//                self.resolveImage(asset: asset, resultHandler: { dir in
+//                  resArr.append(dir);
+//                  group.leave();
+//                });
+//              } else {
+//                resArr.append(self.resolveImage(image: image, maxSize: maxSize));
+//                group.leave();
+//              }
+//            } else if asset.mediaType==PHAssetMediaType.video {
+//              manager.requestAVAsset(forVideo: asset, options: options, resultHandler: { avasset,audioMix,info  in
+//                let videoUrl = avasset as! AVURLAsset;
+//                let url = videoUrl.url;
+//                // TODO: mov to mp4
+//                resArr.append(self.resolveVideo(url: url));
+//                group.leave();
+//              })
+//            } else {
+//              group.leave();
+//            }
+//          }
+//          group.notify(queue: .main) {
+//            result(resArr);
+//          }
+//      }
       ac.cancelBlock = {
         result(nil);
       }
@@ -100,13 +145,15 @@ public class SwiftImagesPickerPlugin: NSObject, FlutterPlugin {
       let vc = UIApplication.shared.delegate!.window!!.rootViewController!;
       let camera = ZLCustomCamera();
       let config = ZLPhotoConfiguration.default();
-      config.maxRecordDuration = maxTime ?? 15;
-      self.setLanguage(configuration: config, language: language);
+      let uiConfig = ZLPhotoUIConfiguration.default();
+      config.cameraConfiguration.maxRecordDuration = maxTime ?? 15;
+      
+      self.setLanguage(configuration: uiConfig, language: language);
       self.setConfig(configuration: config, pickType: pickType);
       if cropOption != nil {
         config.allowEditImage = true;
         if let aspectRatioX = cropOption!["aspectRatioX"] as? Double,let aspectRatioY = cropOption!["aspectRatioY"] as? Double {
-          config.editImageClipRatios = [ZLImageClipRatio(title: "", whRatio: CGFloat(aspectRatioX/aspectRatioY))];
+            config.editImageConfiguration.clipRatios = [ZLImageClipRatio(title: "", whRatio: CGFloat(aspectRatioX/aspectRatioY))];
         }
       }
       
@@ -439,13 +486,13 @@ public class SwiftImagesPickerPlugin: NSObject, FlutterPlugin {
       configuration.allowSelectVideo = false;
     }
     configuration.allowSlideSelect = false;
-    configuration.videoExportType = ZLCustomCamera.VideoExportType.mp4;
+    configuration.cameraConfiguration.videoExportType = ZLCameraConfiguration.VideoExportType.mp4;
   }
   
-  private func setLanguage(configuration: ZLPhotoConfiguration, language: String) {
+  private func setLanguage(configuration: ZLPhotoUIConfiguration, language: String) {
     switch language {
     case "Language.Chinese":
-      configuration.languageType = .chineseSimplified;
+        configuration.languageType = ZLLanguageType.chineseSimplified;
       break;
     case "Language.ChineseTraditional":
       configuration.languageType = .chineseTraditional;
@@ -474,7 +521,7 @@ public class SwiftImagesPickerPlugin: NSObject, FlutterPlugin {
   }
   
   private func setThemeColor(configuration: ZLPhotoConfiguration, colors: NSDictionary?) {
-    let theme = ZLPhotoThemeColorDeploy();
-    configuration.themeColorDeploy = theme;
+//    let theme = ZLPhotoThemeColorDeploy();
+//    configuration.themeColorDeploy = theme;
   }
 }
