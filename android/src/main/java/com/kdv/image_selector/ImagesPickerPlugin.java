@@ -7,11 +7,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.config.SelectMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.utils.PictureFileUtils;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +30,7 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   private Activity activity;
   private Context context;
 
-  public static String channelName = "chavesgu/image_selector";
+  public static String channelName = "/image_selector";
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -73,100 +68,6 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     _result = result;
-    switch (call.method) {
-      case "getPlatformVersion":
-        result.success("Android " + android.os.Build.VERSION.RELEASE);
-        break;
-      case "pick": {
-        int count = (int) call.argument("count");
-        String pickType = call.argument("pickType");
-        double quality = call.argument("quality");
-        boolean supportGif = call.argument("gif");
-        HashMap<String, Object> cropOption = call.argument("cropOption");
-        String language = call.argument("language");
-
-        PictureUtils.createMin(activity,
-                pickType,
-                language,
-                new ArrayList<>(),
-                new PictureUtils.OnPictureSelectorResultListener() {
-                  @Override
-                  public void onResult(ArrayList<LocalMedia> medias) {
-                    // 结果回调
-                    handleResult(medias);
-                  }
-                });
-        break;
-      }
-      case "openCamera": {
-        String pickType = call.argument("pickType");
-        int maxTime = call.argument("maxTime");
-        double quality = call.argument("quality");
-        HashMap<String, Object> cropOption = call.argument("cropOption");
-        String language = call.argument("language");
-
-        int chooseType = SelectMimeType.TYPE_VIDEO;
-        switch (pickType) {
-          case "PickType.image":
-            chooseType = SelectMimeType.TYPE_ALL;
-            break;
-          default:
-            chooseType = PictureMimeType.getMimeType(PictureMimeType.MIME_TYPE_PREFIX_VIDEO);
-            break;
-        }
-
-        PictureUtils.openCamera(activity, false, new PictureUtils.OnPictureSelectorResultListener() {
-          @Override
-          public void onResult(ArrayList<LocalMedia> medias) {
-            // 结果回调
-            handleResult(medias);
-          }
-        });
-        break;
-      }
-      default:
-        result.notImplemented();
-        break;
-    }
   }
 
-  private void handleResult(ArrayList<LocalMedia> medias) {
-    new Thread() {
-      @Override
-      public void run() {
-        final List<Object> resArr = new ArrayList<Object>();
-        for (LocalMedia media : medias) {
-          HashMap<String, Object> map = new HashMap<String, Object>();
-//          String path = media.getPath();
-          String path = media.getAvailablePath();
-          Log.d("handleResult","path==>" + path);
-          if(PictureMimeType.isContent(path) && !media.isCut() && !media.isCompressed()) {
-//            Uri uri = Uri.parse(path);
-            path = media.getRealPath();
-            Log.d("handleResult","path2==>" + "" +",result:" + path);
-          }
-          map.put("path", path);
-
-          String thumbPath;
-          if (media.getMimeType().contains("image")) {
-            thumbPath = path;
-          } else {
-            thumbPath = media.getVideoThumbnailPath();
-          }
-          map.put("thumbPath", thumbPath);
-
-          String size = PictureFileUtils.formatAccurateUnitFileSize(media.getSize());
-          map.put("size", size);
-
-          resArr.add(map);
-        }
-        new Handler(context.getMainLooper()).post(new Runnable() {
-          @Override
-          public void run() {
-            _result.success(resArr);
-          }
-        });
-      }
-    }.start();
-  }
 }

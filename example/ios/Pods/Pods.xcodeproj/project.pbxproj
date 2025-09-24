@@ -15,7 +15,6 @@
 			dependencies = (
 			);
 			name = Flutter;
-			productName = Flutter;
 		};
 /* End PBXAggregateTarget section */
 
@@ -29,7 +28,7 @@
 		0BA59FE78B65122C59EE07CA5F96FD02 /* ZLPhotoPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5180518340803473D530F84C258EF49F /* ZLPhotoPreviewController.swift */; };
 		0CF3E133FB6BF0E3E83E681760CBB05F /* ZLAlbumListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3541F04571A397B6F029BBAB4A9CEFF9 /* ZLAlbumListModel.swift */; };
 		0DC7FE3C93A307C66D090222B469016F /* ZLImagePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E80F35A1ACBD4E731A3F35A2BD70E3 /* ZLImagePreviewController.swift */; };
-		10486C5F56F3C4548FEE34CCA041D04D /* ZLPhotoBrowser_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser_Privacy.bundle */; };
+		10486C5F56F3C4548FEE34CCA041D04D /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = 2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy */; };
 		124D844E1E7A1F4B8BC6F874785E6657 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB403CDA9E17323B0ECF320BD501A8 /* UIKit.framework */; };
 		13A950FBD17A44EE50874117957689F4 /* ZLEnlargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084CF570153007A0C92476DB0A86297 /* ZLEnlargeButton.swift */; };
 		14343723EA26AA8E3406FEAED6DE2A59 /* ZLAddPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D366CD9B548C38AA6D25FB467B0FECC /* ZLAddPhotoCell.swift */; };
@@ -161,10 +160,10 @@
 
 /* Begin PBXFileReference section */
 		041DC12265C120E87CA28D56AE789947 /* ZLClipImageDismissAnimatedTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLClipImageDismissAnimatedTransition.swift; path = Sources/Animation/ZLClipImageDismissAnimatedTransition.swift; sourceTree = "<group>"; };
-		05AEAAF72D6ADB534F42B6B0F14062FC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../../../../../LICENSE; sourceTree = "<group>"; };
+		05AEAAF72D6ADB534F42B6B0F14062FC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../../../../../../LICENSE; sourceTree = "<group>"; };
 		06C05B118A3B3747704F2E50EB988F25 /* ZLPhotoUIConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLPhotoUIConfiguration.swift; path = Sources/General/ZLPhotoUIConfiguration.swift; sourceTree = "<group>"; };
 		070822FA4D55E8ED9308A92B39524885 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		0ADEB592C4E157BC4E7437A8E2FC9374 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Sources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0ADEB592C4E157BC4E7437A8E2FC9374 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Sources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0BA9E4C89FAA82331D15065A6140FF42 /* image_selector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = image_selector.release.xcconfig; sourceTree = "<group>"; };
 		0BAB9A222B0930CBAC2EE1392BC758C4 /* ZLPhotoModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLPhotoModel.swift; path = Sources/General/ZLPhotoModel.swift; sourceTree = "<group>"; };
 		1084CF570153007A0C92476DB0A86297 /* ZLEnlargeButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLEnlargeButton.swift; path = Sources/General/ZLEnlargeButton.swift; sourceTree = "<group>"; };
@@ -175,14 +174,14 @@
 		17148FF061E11DDE952BC1145232A698 /* Cell+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Cell+ZLPhotoBrowser.swift"; path = "Sources/Extensions/Cell+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		17EB201ADD77B8BB59230BB90C70DDFC /* ZLPhotoPreviewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLPhotoPreviewCell.swift; path = Sources/General/ZLPhotoPreviewCell.swift; sourceTree = "<group>"; };
 		1AD14CFD1B7D298CC7FD3F29C0BC9741 /* ZLProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLProgressView.swift; path = Sources/General/ZLProgressView.swift; sourceTree = "<group>"; };
-		1FBA270EE124B87C6ACA61E0684C2431 /* image_selector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = image_selector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FBA270EE124B87C6ACA61E0684C2431 /* image_selector */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = image_selector; path = image_selector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF0DB3BC79814817A8F7A6FC791E2A4 /* ZLCameraConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLCameraConfiguration.swift; path = Sources/General/ZLCameraConfiguration.swift; sourceTree = "<group>"; };
 		21B6E85394B26EFF7C7053BFE96188C1 /* ZLResultModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLResultModel.swift; path = Sources/General/ZLResultModel.swift; sourceTree = "<group>"; };
 		24D0AB62734661C8D399B3B5FD39DB51 /* ZLPhotoBrowser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLPhotoBrowser.modulemap; sourceTree = "<group>"; };
 		27DDD1803443DF40766404F36DBC97AD /* UIColor+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+ZLPhotoBrowser.swift"; path = "Sources/Extensions/UIColor+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		2929AC19F09787003327C98D12D79501 /* Array+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+ZLPhotoBrowser.swift"; path = "Sources/Extensions/Array+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		29F80D8671962888005E0462E78E10FF /* Bool+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bool+ZLPhotoBrowser.swift"; path = "Sources/Extensions/Bool+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
-		2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZLPhotoBrowser_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ZLPhotoBrowser-ZLPhotoBrowser_Privacy"; path = ZLPhotoBrowser_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F73D72DAF9A73AFC6989639BA796AD2 /* NSError+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSError+ZLPhotoBrowser.swift"; path = "Sources/Extensions/NSError+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		317C26B9A7CEDD34ADE8F37FAAB7AC20 /* Pods-Runner-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Runner-frameworks.sh"; sourceTree = "<group>"; };
 		3199B9AB80582AF78005BC2974E5AE37 /* ZLBaseStickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLBaseStickerView.swift; path = Sources/Edit/ZLBaseStickerView.swift; sourceTree = "<group>"; };
@@ -207,7 +206,7 @@
 		61A83F1EC475278CCDBB99BC0C0CEF26 /* CGFloat+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+ZLPhotoBrowser.swift"; path = "Sources/Extensions/CGFloat+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		633D8B5DC118A1CB8C1345A89DF90218 /* Flutter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Flutter.debug.xcconfig; sourceTree = "<group>"; };
 		65878B638E1BB859675092D6BFCBB77B /* ZLPhotoBrowser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLPhotoBrowser-prefix.pch"; sourceTree = "<group>"; };
-		669E8F25E1897672BDB80B7EB784DA24 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Runner"; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DFB77C51AC76DC1C5613D07A8917571 /* ZLPhotoPreviewAnimatedTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLPhotoPreviewAnimatedTransition.swift; path = Sources/Animation/ZLPhotoPreviewAnimatedTransition.swift; sourceTree = "<group>"; };
 		700527D13842B38B8BBA1EBC46584936 /* ZLEditImageConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLEditImageConfiguration.swift; path = Sources/General/ZLEditImageConfiguration.swift; sourceTree = "<group>"; };
 		72DEF069172582EDE17BBDF162A864D9 /* ZLEditImageViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLEditImageViewController.swift; path = Sources/Edit/ZLEditImageViewController.swift; sourceTree = "<group>"; };
@@ -228,10 +227,10 @@
 		96BF45FBE2BC9AD7B2D7E56D01B5EE46 /* Pods-Runner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Runner-umbrella.h"; sourceTree = "<group>"; };
 		96DF8E9929C797ABEA27548F738B9899 /* ZLAlbumListCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLAlbumListCell.swift; path = Sources/General/ZLAlbumListCell.swift; sourceTree = "<group>"; };
 		97B74CD98A4C8FB48598880818DD7AAD /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
-		9AE376F722B0CC29B7769A17E8F456AD /* Flutter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Flutter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9AE376F722B0CC29B7769A17E8F456AD /* Flutter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Flutter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D3423C9439ACD8C033E193A19546EF7 /* ZLInputTextViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLInputTextViewController.swift; path = Sources/Edit/ZLInputTextViewController.swift; sourceTree = "<group>"; };
 		9D366CD9B548C38AA6D25FB467B0FECC /* ZLAddPhotoCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLAddPhotoCell.swift; path = Sources/General/ZLAddPhotoCell.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E2D08C708FC48C809914A60ADEFBB45 /* ZLPhotoBrowser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZLPhotoBrowser-dummy.m"; sourceTree = "<group>"; };
 		9E3FBAE5AA7E1BC4C237490A5374D968 /* image_selector-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "image_selector-umbrella.h"; sourceTree = "<group>"; };
 		9F79F8269DC34AC56BB3D1D9652C0D86 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +246,7 @@
 		B37DF759CAED73883C0169C237DB7B36 /* ZLFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLFilter.swift; path = Sources/Edit/ZLFilter.swift; sourceTree = "<group>"; };
 		B58B3FCFAB9C815DE275ABD2C6534815 /* ImagesPickerPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ImagesPickerPlugin.h; path = ../../../../../../../ios/Classes/ImagesPickerPlugin.h; sourceTree = "<group>"; };
 		B8DCCDF904A05C3D33F59E60016190DF /* ZLPhotoBrowser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZLPhotoBrowser-umbrella.h"; sourceTree = "<group>"; };
-		BB28130B0F4C47DC99D2DB9C80F70152 /* ZLPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZLPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB28130B0F4C47DC99D2DB9C80F70152 /* ZLPhotoBrowser */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZLPhotoBrowser; path = ZLPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFD96A16956D36BE13528E7CE10C3D2 /* ZLCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLCollectionViewFlowLayout.swift; path = Sources/General/ZLCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		BDB8BB0F6F0A086095EDC51054539E99 /* UIGraphicsImageRenderer+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIGraphicsImageRenderer+ZLPhotoBrowser.swift"; path = "Sources/Extensions/UIGraphicsImageRenderer+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		BF4691E0945FE173A78E69C3B3A15C79 /* ZLCustomCamera.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLCustomCamera.swift; path = Sources/Camera/ZLCustomCamera.swift; sourceTree = "<group>"; };
@@ -256,7 +255,7 @@
 		CDAECCF4B5E08124ED410F09FD5A5DF9 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		D2986B11519B758B17305FD33EA3CA5A /* UIFont+ZLPhotoBrowser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+ZLPhotoBrowser.swift"; path = "Sources/Extensions/UIFont+ZLPhotoBrowser.swift"; sourceTree = "<group>"; };
 		D2FA70CA298C392CB8332ADEEDD1CE85 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
-		D3342334DA46F365A416ECED67B9648E /* image_selector.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = image_selector.podspec; path = ../../../../../../ios/image_selector.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D3342334DA46F365A416ECED67B9648E /* image_selector.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = image_selector.podspec; path = ../../../../../../ios/image_selector.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D387C14BB81EF54955C401B4205CCF0A /* ZLAlbumListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLAlbumListController.swift; path = Sources/General/ZLAlbumListController.swift; sourceTree = "<group>"; };
 		D4AAE9B5B62204FC33203B51A5843387 /* ZLImageNavController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLImageNavController.swift; path = Sources/General/ZLImageNavController.swift; sourceTree = "<group>"; };
 		D73D4D992D949EB6D9D7B71E20A04721 /* ZLPhotoPreviewSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZLPhotoPreviewSheet.swift; path = Sources/General/ZLPhotoPreviewSheet.swift; sourceTree = "<group>"; };
@@ -324,10 +323,10 @@
 		0AB1C125ADE99D413A5ECE1E493173ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FBA270EE124B87C6ACA61E0684C2431 /* image_selector.framework */,
-				669E8F25E1897672BDB80B7EB784DA24 /* Pods_Runner.framework */,
-				BB28130B0F4C47DC99D2DB9C80F70152 /* ZLPhotoBrowser.framework */,
-				2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser_Privacy.bundle */,
+				1FBA270EE124B87C6ACA61E0684C2431 /* image_selector */,
+				669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */,
+				BB28130B0F4C47DC99D2DB9C80F70152 /* ZLPhotoBrowser */,
+				2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,6 +336,7 @@
 			children = (
 				AB44EBF60D214E097FE8415048DB6D62 /* ios */,
 			);
+			name = image_selector;
 			path = image_selector;
 			sourceTree = "<group>";
 		};
@@ -437,6 +437,7 @@
 			children = (
 				CBC1D24AD6F0DDF5F7D3FAF103826B59 /* ios */,
 			);
+			name = example;
 			path = example;
 			sourceTree = "<group>";
 		};
@@ -445,6 +446,7 @@
 			children = (
 				D6BD90A3216E3F4D58C4CDFD50EB9317 /* plugins */,
 			);
+			name = .symlinks;
 			path = .symlinks;
 			sourceTree = "<group>";
 		};
@@ -464,6 +466,7 @@
 				8B5CA95A4D59E0CFEF79E1689BC93719 /* Resources */,
 				9A683414E3ECD2E22BAF503441911484 /* Support Files */,
 			);
+			name = ZLPhotoBrowser;
 			path = ZLPhotoBrowser;
 			sourceTree = "<group>";
 		};
@@ -563,6 +566,7 @@
 			children = (
 				C51FC62E27AA13096B4AEA1169680D0D /* Classes */,
 			);
+			name = ios;
 			path = ios;
 			sourceTree = "<group>";
 		};
@@ -573,6 +577,7 @@
 				FCA6B91C74D2467A98EEBCBEBC37C95A /* ImagesPickerPlugin.m */,
 				72F9E7C1843C32E8855A035FF476D311 /* SwiftImagesPickerPlugin.swift */,
 			);
+			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -591,6 +596,7 @@
 			children = (
 				480C8F597A3DC6D04CAEF1FD50764A72 /* .symlinks */,
 			);
+			name = ios;
 			path = ios;
 			sourceTree = "<group>";
 		};
@@ -628,6 +634,7 @@
 			children = (
 				22AA200C101277CF60BBE3F8FDF10737 /* image_selector */,
 			);
+			name = plugins;
 			path = plugins;
 			sourceTree = "<group>";
 		};
@@ -636,6 +643,7 @@
 			children = (
 				3DCAFFD3F848F226DDB597EA877C5B17 /* example */,
 			);
+			name = ..;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -709,7 +717,7 @@
 			);
 			name = ZLPhotoBrowser;
 			productName = ZLPhotoBrowser;
-			productReference = BB28130B0F4C47DC99D2DB9C80F70152 /* ZLPhotoBrowser.framework */;
+			productReference = BB28130B0F4C47DC99D2DB9C80F70152 /* ZLPhotoBrowser */;
 			productType = "com.apple.product-type.framework";
 		};
 		8B74B458B450D74B75744B87BD747314 /* Pods-Runner */ = {
@@ -730,7 +738,7 @@
 			);
 			name = "Pods-Runner";
 			productName = Pods_Runner;
-			productReference = 669E8F25E1897672BDB80B7EB784DA24 /* Pods_Runner.framework */;
+			productReference = 669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */;
 			productType = "com.apple.product-type.framework";
 		};
 		9066640DC2781DD72803E86F53E40AAE /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy */ = {
@@ -747,7 +755,7 @@
 			);
 			name = "ZLPhotoBrowser-ZLPhotoBrowser_Privacy";
 			productName = ZLPhotoBrowser_Privacy;
-			productReference = 2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser_Privacy.bundle */;
+			productReference = 2D2A9EB70C6642F12F68C802DBB83654 /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy */;
 			productType = "com.apple.product-type.bundle";
 		};
 		BBDB58AB67822B2A4C0217D463856D54 /* image_selector */ = {
@@ -767,7 +775,7 @@
 			);
 			name = image_selector;
 			productName = image_selector;
-			productReference = 1FBA270EE124B87C6ACA61E0684C2431 /* image_selector.framework */;
+			productReference = 1FBA270EE124B87C6ACA61E0684C2431 /* image_selector */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -788,6 +796,8 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 0AB1C125ADE99D413A5ECE1E493173ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -807,7 +817,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D439A21540B59FF373E10EC5FCFE95F1 /* ZLPhotoBrowser.bundle in Resources */,
-				10486C5F56F3C4548FEE34CCA041D04D /* ZLPhotoBrowser_Privacy.bundle in Resources */,
+				10486C5F56F3C4548FEE34CCA041D04D /* ZLPhotoBrowser-ZLPhotoBrowser_Privacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1313,7 +1323,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/ZLPhotoBrowser/ZLPhotoBrowser-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1428,7 +1438,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/ZLPhotoBrowser/ZLPhotoBrowser-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1596,7 +1606,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/ZLPhotoBrowser/ZLPhotoBrowser-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

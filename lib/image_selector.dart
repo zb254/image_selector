@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 class ImageSelector {
   static const MethodChannel _channel =
-      const MethodChannel('chavesgu/image_selector');
+      const MethodChannel('');
 
   static Future<List<Media>?> pick({
     int count = 1,
@@ -15,46 +15,7 @@ class ImageSelector {
     double? quality,
     Language language = Language.System,
   }) async {
-    assert(count > 0, 'count must > 0');
-    if (quality != null) {
-      assert(quality > 0, 'quality must > 0');
-      assert(quality <= 1, 'quality must <= 1');
-    }
-    if (maxSize != null) {
-      assert(maxSize > 0, 'maxSize must > 0');
-    }
-    try {
-      List<dynamic>? res = await _channel.invokeMethod('pick', {
-        "count": count,
-        "pickType": pickType.toString(),
-        "gif": gif,
-        "maxSize": maxSize ?? null,
-        "quality": quality ?? -1,
-        "cropOption": cropOpt != null
-            ? {
-                "quality": quality ?? 1,
-                "cropType": cropOpt.cropType.toString(),
-                "aspectRatioX": cropOpt.aspectRatio?.aspectRatioX,
-                "aspectRatioY": cropOpt.aspectRatio?.aspectRatioY,
-              }
-            : null,
-        "language": language.toString(),
-      });
-      if (res != null) {
-        List<Media> output = res.map((image) {
-          Media media = Media(
-            path: image["path"],
-            size: image["size"],
-            thumbPath: image["thumbPath"],
-          );
-          return media;
-        }).toList();
-        return output;
-      }
-      return null;
-    } catch (e) {
-      return null;
-    }
+    return null;
   }
 
   static Future<List<Media>?> openCamera({
@@ -65,68 +26,15 @@ class ImageSelector {
     double? quality,
     Language language = Language.System,
   }) async {
-    if (quality != null) {
-      assert(quality > 0, 'quality must > 0');
-      assert(quality <= 1, 'quality must <= 1');
-    }
-    if (maxSize != null) {
-      assert(maxSize > 0, 'maxSize must > 0');
-    }
-    try {
-      List<dynamic>? res = await _channel.invokeMethod('openCamera', {
-        "pickType": pickType.toString(),
-        "maxTime": maxTime,
-        "maxSize": maxSize ?? null,
-        "quality": quality ?? -1,
-        "cropOption": cropOpt != null
-            ? {
-                "quality": quality ?? 1,
-                "cropType": cropOpt.cropType.toString(),
-                "aspectRatioX": cropOpt.aspectRatio?.aspectRatioX,
-                "aspectRatioY": cropOpt.aspectRatio?.aspectRatioY,
-              }
-            : null,
-        "language": language.toString(),
-      });
-      if (res != null) {
-        List<Media> output = res.map((image) {
-          Media media = Media(
-            path: image["path"],
-            size: image["size"],
-            thumbPath: image["thumbPath"],
-          );
-          return media;
-        }).toList();
-        return output;
-      }
-      return null;
-    } catch (e) {
-      return null;
-    }
+    return null;
   }
 
   static Future<bool> saveImageToAlbum(File file, {String? albumName}) async {
-    try {
-      return await _channel.invokeMethod('saveImageToAlbum', {
-        "path": file.path,
-        "albumName": albumName,
-      });
-    } on PlatformException catch (e) {
-      print(e);
-      return false;
-    }
+    return false;
   }
 
   static Future<bool> saveVideoToAlbum(File file, {String? albumName}) async {
-    try {
-      return await _channel.invokeMethod('saveVideoToAlbum', {
-        "path": file.path,
-        "albumName": albumName,
-      });
-    } on PlatformException catch (e) {
-      print(e);
-      return false;
-    }
+    return false;
   }
 }
 
